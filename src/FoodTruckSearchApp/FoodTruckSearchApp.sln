@@ -9,13 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodTruckSearchFrontEnd", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodTruckSearchBackendAPI", "FoodTruckSearchBackendAPI\FoodTruckSearchBackendAPI.csproj", "{154DC05F-AF94-4E34-A87B-6720CB02AD1D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodTruckSearchSodaClient", "HttpClient\FoodTruckSearchSodaClient.csproj", "{BA54CBE1-6D3E-4A22-8482-4F75C110FB40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodTruckSearchSodaClientTests", "FoodTruckSearchSodaClientTests\FoodTruckSearchSodaClientTests.csproj", "{E3F70736-F8BF-4E25-8CB2-1D8EABCD785E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodTruckSearchSodaClientTests", "FoodTruckSearchSodaClientTests\FoodTruckSearchSodaClientTests.csproj", "{E3F70736-F8BF-4E25-8CB2-1D8EABCD785E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodTruckBingMapClient", "FoodTruckBingMapClient\FoodTruckBingMapClient.csproj", "{5A0C48F2-1EE4-4D2D-9842-290A338B510D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodTruckBingMapClient", "FoodTruckBingMapClient\FoodTruckBingMapClient.csproj", "{5A0C48F2-1EE4-4D2D-9842-290A338B510D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodTruckBingMapClientTests", "FoodTruckBingMapClientTests\FoodTruckBingMapClientTests.csproj", "{A49B0C45-4F39-4DF0-83FB-B964EB8D0148}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodTruckBingMapClientTests", "FoodTruckBingMapClientTests\FoodTruckBingMapClientTests.csproj", "{A49B0C45-4F39-4DF0-83FB-B964EB8D0148}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodTruckSearchSodaClient", "FoodTruckSearchSodaClient\FoodTruckSearchSodaClient.csproj", "{51813DF0-E3A3-4540-AE78-BF832C33D217}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,6 @@ Global
 		{154DC05F-AF94-4E34-A87B-6720CB02AD1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{154DC05F-AF94-4E34-A87B-6720CB02AD1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{154DC05F-AF94-4E34-A87B-6720CB02AD1D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA54CBE1-6D3E-4A22-8482-4F75C110FB40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA54CBE1-6D3E-4A22-8482-4F75C110FB40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA54CBE1-6D3E-4A22-8482-4F75C110FB40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA54CBE1-6D3E-4A22-8482-4F75C110FB40}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E3F70736-F8BF-4E25-8CB2-1D8EABCD785E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E3F70736-F8BF-4E25-8CB2-1D8EABCD785E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3F70736-F8BF-4E25-8CB2-1D8EABCD785E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +47,10 @@ Global
 		{A49B0C45-4F39-4DF0-83FB-B964EB8D0148}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A49B0C45-4F39-4DF0-83FB-B964EB8D0148}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A49B0C45-4F39-4DF0-83FB-B964EB8D0148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51813DF0-E3A3-4540-AE78-BF832C33D217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51813DF0-E3A3-4540-AE78-BF832C33D217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51813DF0-E3A3-4540-AE78-BF832C33D217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51813DF0-E3A3-4540-AE78-BF832C33D217}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
