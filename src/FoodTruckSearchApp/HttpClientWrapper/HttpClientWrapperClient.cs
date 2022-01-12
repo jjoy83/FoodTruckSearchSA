@@ -1,18 +1,17 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodTruckBingMapClient
+namespace HttpClientWrapper
 {
-    public class BingMapHttpClient : HttpClient
+    public class HttpClientWrapperClient : HttpClient, IHttpClientWrapperClient
     {
-        public BingMapHttpClient()
+        public HttpClientWrapperClient()
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         }
@@ -116,6 +115,7 @@ namespace FoodTruckBingMapClient
                 throw new Exception($"Error parsing json from http request. Http Status: {response.StatusCode}. {ex.GetType().Name} Message: {ex.Message}", ex);
             }
         }
-
     }
+
+
 }

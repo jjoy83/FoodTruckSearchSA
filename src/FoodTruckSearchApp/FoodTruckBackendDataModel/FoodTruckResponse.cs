@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace FoodTruckSearchBackendAPI
+namespace FoodTruckBackendDataModel
 {
+    /// <summary>
+    /// Data model for food truck response.
+    /// </summary>
     public class FoodTruckResponse
     {
         public string Latitude { get; set; }
@@ -12,6 +14,5 @@ namespace FoodTruckSearchBackendAPI
         public string Longitude { get; set; }
 
         public string FoodItems { get; set; }
-
     }
 }

@@ -1,7 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 
+/// <summary>
+/// This is the response model for bing map location search api
+/// </summary>
 namespace FoodTruckBingMapClient
 {
     public class BingMapSearchResponse

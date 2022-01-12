@@ -21,6 +21,8 @@ namespace FoodTruckSearchBackendAPI
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+
+                    //Hookup Appinsights
                 });
     }
 }

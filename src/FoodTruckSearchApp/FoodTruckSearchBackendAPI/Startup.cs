@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FoodTruckBingMapClient;
 using FoodTruckSearchSodaClient;
+using HttpClientWrapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,9 +28,12 @@ namespace FoodTruckSearchBackendAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IFoodTruckSearchSodaClient, FoodTruckSearchSodaClient.FoodTruckSearchSodaClient>();
+            services.AddScoped<IFoodTruckBingMapClient, FoodTruckBingMapClient.FoodTruckBingMapClient>();
+            services.AddSingleton<IHttpClientWrapperClient, HttpClientWrapperClient>();
+
             services.AddControllers();
-            services.AddScoped<IFoodTruckSearchSodaClient>();
-            services.AddScoped<IFoodTruckBingMapClient>();
+       
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

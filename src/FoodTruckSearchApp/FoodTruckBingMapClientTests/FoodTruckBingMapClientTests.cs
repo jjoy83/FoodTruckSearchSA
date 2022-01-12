@@ -4,22 +4,28 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Net.Http;
-using MockHttpClient;
 using System.Threading.Tasks;
+using Moq;
+using HttpClientWrapper;
+using Newtonsoft.Json.Linq;
 
 namespace FoodTruckBingMapClient.Tests
 {
 
+    /// <summary>
+    /// These are the unit tests for bing map search client. Right now the basic MSUnit tests are being used for save time
+    /// We can probably add Nunit or some other unit testing extension and leverage that.
+    /// Used Moq for mocking.
+    /// </summary>
     [TestClass()]
     public class FoodTruckBingMapClientTests
     {
         private IFoodTruckBingMapClient client;
-        private readonly string BINGMAP_KEY = "AtgqTzjl5buu80RwoChi-55k1NkC18DGvQCwSnjICKIkQBfx-xG3pWFtlrGM9kzk";
+        private string BINGMAP_KEY = "dummy-key";
 
         [TestInitialize]
         public void TestInitialize()
         {
-            client = new FoodTruckBingMapClient(BINGMAP_KEY);
         }
 
         [TestMethod()]
@@ -28,26 +34,15 @@ namespace FoodTruckBingMapClient.Tests
 
             string longitude = "28.121456";
             string latitude = "-82.462074";
-            MockHttpClient.MockHttpClient mockClient = new MockHttpClient.MockHttpClient();
 
-            mockClient
-            .When("https://dev.virtualearth.net/REST/v1/LocalSearch/*")
-                .Then(req => new HttpResponseMessage(System.Net.HttpStatusCode.OK)
-                      .WithJsonContent(new
-                      {
-                          entityType = "Test",
-                          name = "Test",
-                          Website = "Test",
-                          geoCodePoint = "longitude,latitude",
-                          address = "test",
-                          phoneNumber = "123"
+            var mock = new Mock<IHttpClientWrapperClient>();
+            mock.Setup(x => x.GetJObjectAsync(It.IsAny<string>())).ReturnsAsync(It.IsAny<JObject>());
 
-                      }));
+            client = new FoodTruckBingMapClient(mock.Object);
 
+            var response = client.GetNearestLocationFromBing(longitude, latitude, BINGMAP_KEY);
 
-            var response = client.GetNearestLocationFromBing(longitude, latitude);
-
-            Assert.IsNotNull(response);
+            mock.Verify(x => x.GetJObjectAsync(It.IsAny<string>()), Times.AtLeastOnce());
 
         }
     }

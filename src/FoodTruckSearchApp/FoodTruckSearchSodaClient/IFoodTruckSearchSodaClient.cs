@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FoodTruckSearchSodaClient
 {
     public interface IFoodTruckSearchSodaClient
     {
-        IEnumerable<FoodTruckDataModel> SearchFoodtruckSodaDataByText(string searchKey);
+        Task<IEnumerable<FoodTruckDataModel>> SearchFoodtruckSodaDataByText(string searchKey, string appToken);
 
-        IEnumerable<FoodTruckDataModel> SearchFoodtruckSodaDataByLocation(string latitude, string longitude);
     }
 }

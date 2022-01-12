@@ -1,30 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using BingMapsRESTToolkit;
+using HttpClientWrapper;
 
-
+/// <summary>
+/// This is the Bing Map Search Client 
+/// </summary>
 namespace FoodTruckBingMapClient
 {
     /// <summary>
-    ///
+    ///This class is responsible for making search request to bing map local search
+    ///Tried to use the BingMapApiRestKit from Nuget. But somehow the LocationCog search request is missing. Hence used the httpClient approach.
     /// </summary>
     public class FoodTruckBingMapClient : IFoodTruckBingMapClient
     {
-        private BingMapHttpClient client;
-        private readonly string BING_MAP_KEY;
+        private IHttpClientWrapperClient _client;
 
-        public FoodTruckBingMapClient(string bingMapKey)
+        public FoodTruckBingMapClient(IHttpClientWrapperClient client)
         {
-            client = new BingMapHttpClient();
-            BING_MAP_KEY = bingMapKey;
+            _client = client;
         }
 
-        public IEnumerable<BingMapSearchResponse> GetNearestLocationFromBing(string latitude, string longitude)
+        public async Task<IEnumerable<BingMapSearchResponse>> GetNearestLocationFromBing(string latitude, string longitude, string bingMapKey)
         {
-            client = new BingMapHttpClient();
-            string url = @$"https://dev.virtualearth.net/REST/v1/LocalSearch/?query=food&userLocation={latitude},{longitude}&key={BING_MAP_KEY}";
-
-            var response = client.GetJObjectAsync(url) as IEnumerable<BingMapSearchResponse>;
+            string url = @$"https://dev.virtualearth.net/REST/v1/LocalSearch/?query=food&userLocation={latitude},{longitude}&key={bingMapKey}";
+            var response = await _client.GetJObjectAsync(url) as IEnumerable<BingMapSearchResponse>;
             return response;
 
         }

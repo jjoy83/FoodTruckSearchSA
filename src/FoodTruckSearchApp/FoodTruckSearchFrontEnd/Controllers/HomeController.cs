@@ -29,6 +29,7 @@ namespace FoodTruckSearchFrontEnd.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult Search([FromBody]SearchViewModel viewModel)
         {
             if (!ModelState.IsValid)
