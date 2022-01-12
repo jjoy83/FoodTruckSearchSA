@@ -37,56 +37,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
-            <table>
-                <tr>
-                    <td width="20%">
-                        <table>
-                            <tr>
-                                <td>
-                                    <div class="container" width="10px">
-                                        Search here:
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="container">
-                                        <input id="txtSearchKey" type="text" />
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="container">
-                                        Location:
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="container">
-                                        Longitude:
-                                    </div>
-                                    <div class="container">
-                                        <input id="txtSearchLongitude" type="text" />
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="container">
-                                        Latitude:
-                                    </div>
-                                    <div class="container">
-                                        <input id="txtSearchLatitude" type="text" />
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <div><input id="btnSearch" type="submit" value="btnSearch" asp-controller="Home" asp-action="Search"/></div>
-                            </tr>
-                        </table>
-
-                    </td>
-                    <td width="80%"> @RenderBody()</td>
-                </tr>
-            </table>
-
-
+           <div>@RenderBody()</div>
         </main>
     </div>
 
@@ -99,6 +50,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
-   
+
 </body>
 </html>

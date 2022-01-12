@@ -11,7 +11,7 @@ namespace FoodTruckBingMapClient
     public class FoodTruckBingMapClient : IFoodTruckBingMapClient
     {
         private BingMapHttpClient client;
-        private string BING_MAP_KEY;
+        private readonly string BING_MAP_KEY;
 
         public FoodTruckBingMapClient(string bingMapKey)
         {
@@ -28,7 +28,6 @@ namespace FoodTruckBingMapClient
             return response;
 
         }
-
 
     }
 }

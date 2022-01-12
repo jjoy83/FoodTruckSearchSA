@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FoodTruckBingMapClient;
+using FoodTruckSearchSodaClient;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +28,8 @@ namespace FoodTruckSearchBackendAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<IFoodTruckSearchSodaClient>();
+            services.AddScoped<IFoodTruckBingMapClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

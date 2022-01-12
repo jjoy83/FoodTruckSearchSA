@@ -1,6 +1,57 @@
-﻿@{
+﻿@model SearchViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
-    <div class="container">
-        <div id="myMap" style='position:relative;width:800px;height:600px;'></div>
-    </div>
+<table>
+    <tr>
+        <td width="20%">
+            <table>
+                <tr>
+                    <td>
+                        <div class="container" width="10px">
+                            Search here:
+                        </div>
+                    </td>
+                    <td>
+                        <div class="container">
+                            <input id="txtSearchKey" type="text" name="searchText"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="container">
+                            Location:
+                        </div>
+                    </td>
+                    <td>
+                        <div class="container">
+                            Longitude:
+                        </div>
+                        <div class="container">
+                            <input id="txtSearchLongitude" type="text" name="longitude" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="container">
+                            Latitude:
+                        </div>
+                        <div class="container">
+                            <input id="txtSearchLatitude" type="text" name="latitude"/>
+                        </div>
+                    </td>
+                    <td>
+                        <div><input id="btnSearch" type="submit" value="Search" asp-area="" asp-controller="Home" asp-action="Search" method="post" /></div>
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+        <td>
+            <div class="container">
+                <div id="myMap" style='position:relative;width:800px;height:600px;'></div>
+            </div>
+        </td>
+    </tr>
+</table>
+

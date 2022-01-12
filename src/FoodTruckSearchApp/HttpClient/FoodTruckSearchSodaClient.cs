@@ -16,7 +16,6 @@ namespace FoodTruckSearchSodaClient
     public class FoodTruckSearchSodaClient : IFoodTruckSearchSodaClient
     {
         private SodaClient client;
-        //private const string APP_TOKEN = "RpdIpNijZuSD9e8d1eHG69DvN";
         private const string SODA_URI = "data.smgov.net";
         private const string SODA_DATASET = "rqzj-sfat";
         public FoodTruckSearchSodaClient(string appToken)

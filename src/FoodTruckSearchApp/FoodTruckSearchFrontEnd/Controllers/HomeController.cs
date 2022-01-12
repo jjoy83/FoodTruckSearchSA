@@ -20,7 +20,8 @@ namespace FoodTruckSearchFrontEnd.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            SearchViewModel model = new SearchViewModel();
+            return View(model);
         }
 
         public IActionResult Privacy()
@@ -28,9 +29,20 @@ namespace FoodTruckSearchFrontEnd.Controllers
             return View();
         }
 
-        public IActionResult Search()
+        public IActionResult Search([FromBody]SearchViewModel viewModel)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return Error();
+            }
+            else
+            {
+                string searchKey = viewModel.SearchText;
+                //call the api with searchText, latitude and longitude
+                //Once the result is returned, send it back 
+                return View();
+            }
+           
         }
 
 

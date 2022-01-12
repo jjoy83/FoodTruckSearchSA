@@ -12,8 +12,6 @@ namespace FoodTruckBingMapClient
 {
     public class BingMapHttpClient : HttpClient
     {
-        private readonly int retryCount = 3;
-        private readonly TimeSpan delay = TimeSpan.FromSeconds(5);
         public BingMapHttpClient()
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -21,22 +19,20 @@ namespace FoodTruckBingMapClient
 
         public async Task<JObject> GetJObjectAsync(String url)
         {
-            while (true)
+            try
             {
-                try
+                using (HttpResponseMessage response = await this.GetAsync(url))
                 {
-                    using (HttpResponseMessage response = await this.GetAsync(url))
-                    {
-                        return await HandleResponse(response);
-                    }
-
+                    return await HandleResponse(response);
                 }
-                catch (Exception ex)
-                {
-                    throw ex;
 
-                }
             }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+
         }
 
         public async Task<JObject> PutJsonAsync<T>(String url, T obj)
