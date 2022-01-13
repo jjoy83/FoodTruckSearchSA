@@ -14,5 +14,9 @@ namespace FoodTruckBackendDataModel
         public string Longitude { get; set; }
 
         public string FoodItems { get; set; }
+
+        public string X { get; set; }
+
+        public string Y { get; set; }
     }
 }

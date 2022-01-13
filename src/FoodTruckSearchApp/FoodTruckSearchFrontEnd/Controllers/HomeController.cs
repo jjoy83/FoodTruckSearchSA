@@ -29,24 +29,6 @@ namespace FoodTruckSearchFrontEnd.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Search([FromBody]SearchViewModel viewModel)
-        {
-            if (!ModelState.IsValid)
-            {
-                return Error();
-            }
-            else
-            {
-                string searchKey = viewModel.SearchText;
-                //call the api with searchText, latitude and longitude
-                //Once the result is returned, send it back 
-                return View();
-            }
-           
-        }
-
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -24,41 +24,47 @@ namespace FoodTruckSearchBackendAPI.Controllers
     public class FoodTruckSearchController : ControllerBase
     {
         private readonly ILogger<FoodTruckSearchController> _logger;
-        private readonly IFoodTruckBingMapClient _bingMapClient;
+        //private readonly IFoodTruckBingMapClient _bingMapClient;
         private readonly IFoodTruckSearchSodaClient _sodaSearchClient;
         private readonly IHttpClientWrapperClient _httpClientWrapperClient;
         private readonly IConfiguration _config;
-        private readonly string BING_MAP_KEY;
+        //private readonly string BING_MAP_KEY;
         private readonly string SODA_APP_TOKEN;
 
-        public FoodTruckSearchController(ILogger<FoodTruckSearchController> logger, IConfiguration config, IFoodTruckBingMapClient foodtruckBingMapClient, IFoodTruckSearchSodaClient foodTruckSearchSodaClient, IHttpClientWrapperClient httpWrapperClient)
+        public FoodTruckSearchController(ILogger<FoodTruckSearchController> logger, IConfiguration config, IFoodTruckSearchSodaClient foodTruckSearchSodaClient, IHttpClientWrapperClient httpWrapperClient)
         {
             _logger = logger;
             _config = config;
-            _bingMapClient = foodtruckBingMapClient;
+            //_bingMapClient = foodtruckBingMapClient;
             _sodaSearchClient = foodTruckSearchSodaClient;
             _httpClientWrapperClient = httpWrapperClient;
 
             //This can be stored in keyvault and fetched from there.
             SODA_APP_TOKEN = _config.GetSection("SodaAccount").Get<SodaSettting>().AppToken;
-            BING_MAP_KEY = _config.GetSection("BingMap").Get<BingMapSetting>().Key;
+            //BING_MAP_KEY = _config.GetSection("BingMap").Get<BingMapSetting>().Key;
 
         }
 
-        [Route("/api/SearchFoodTruck")]
-        [HttpPost]
-        public async Task<IEnumerable<FoodTruckResponse>> SearchFoodTruck(FoodTruckRequest request)
+        [HttpGet]
+        public string Get()
+        {
+            return "Hello World";
+        }
+
+        [Route("SearchFoodTruck")]
+        [HttpGet]
+        public async Task<IEnumerable<FoodTruckResponse>> SearchFoodTruck(string searchText, string latitude, string longitude)
         {
 
             List<FoodTruckResponse> foodtruckResponseList = new List<FoodTruckResponse>();
             try
             {
-                _logger.LogError($"Making calls to bing map search api with latitude {request.Latitude}, longitude {request.Longitude}");
-                var response = await _bingMapClient.GetNearestLocationFromBing(request.Latitude, request.Longitude, BING_MAP_KEY);
-                _logger.LogError($"Successfully completed the calls to bing map search api with latitude {request.Latitude}, longitude {request.Longitude}");
-                _logger.LogError($"Making calls to soda client api with search text {request.SearchText}");
-                var sodaResponse = await _sodaSearchClient.SearchFoodtruckSodaDataByText(request.SearchText, SODA_APP_TOKEN);
-                _logger.LogError($"Successfully completed the calls to soda client api search text {request.SearchText}");
+                //_logger.LogError($"Making calls to bing map search api with latitude {request.Latitude}, longitude {request.Longitude}");
+                //var response = await _bingMapClient.GetNearestLocationFromBing(request.Latitude, request.Longitude, BING_MAP_KEY);
+                //_logger.LogError($"Successfully completed the calls to bing map search api with latitude {request.Latitude}, longitude {request.Longitude}");
+                _logger.LogError($"Making calls to soda client api with search text {searchText}");
+                var sodaResponse = await _sodaSearchClient.SearchFoodtruckSodaDataByText(searchText, SODA_APP_TOKEN, latitude, longitude);
+                _logger.LogError($"Successfully completed the calls to soda client api search text {searchText}");
 
                 foreach (var item in sodaResponse)
                 {
@@ -67,7 +73,10 @@ namespace FoodTruckSearchBackendAPI.Controllers
                     {
                         FoodItems = item.fooditems,
                         Latitude = item.latitude,
-                        Longitude = item.longitude
+                        Longitude = item.longitude,
+                        X = item.x,
+                        Y = item.y
+
                     });
                 }
             }

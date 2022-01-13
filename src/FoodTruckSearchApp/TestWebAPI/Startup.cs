@@ -2,9 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FoodTruckBingMapClient;
-using FoodTruckSearchSodaClient;
-using HttpClientWrapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,9 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 
-namespace FoodTruckSearchBackendAPI
+namespace TestWebAPI
 {
     public class Startup
     {
@@ -29,23 +25,7 @@ namespace FoodTruckSearchBackendAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IFoodTruckSearchSodaClient, FoodTruckSearchSodaClient.FoodTruckSearchSodaClient>();
-            //services.AddScoped<IFoodTruckBingMapClient, FoodTruckBingMapClient.FoodTruckBingMapClient>();
-            services.AddSingleton<IHttpClientWrapperClient, HttpClientWrapperClient>();
-
-            services.AddSwaggerGen(options =>
-            {
-                options.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = "Food Truck Search API",
-                    Description = "An ASP.NET Core Web API for searching food trucks in San Francisco area based on search text, latitude and longitude.",
-
-                });
-            });
-
             services.AddControllers();
-       
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,8 +33,7 @@ namespace FoodTruckSearchBackendAPI
         {
             if (env.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseDeveloperExceptionPage();
             }
 
             app.UseHttpsRedirection();
@@ -66,12 +45,6 @@ namespace FoodTruckSearchBackendAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
-
-            app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-                options.RoutePrefix = string.Empty;
             });
         }
     }
