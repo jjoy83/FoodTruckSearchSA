@@ -9,14 +9,10 @@ namespace FoodTruckBackendDataModel
     /// </summary>
     public class FoodTruckResponse
     {
-        public string Latitude { get; set; }
+        public IEnumerable<FoodTruckData> FoodTruckDataList { get; set; } = new List<FoodTruckData>();
 
-        public string Longitude { get; set; }
+        public bool Success { get; set; } 
 
-        public string FoodItems { get; set; }
-
-        public string X { get; set; }
-
-        public string Y { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }

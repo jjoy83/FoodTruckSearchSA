@@ -14,6 +14,10 @@ namespace FoodTruckSearchFrontEnd.Models
 
         public string FoodItems { get; set; }
 
+        public string Latitude { get; set; }
+
+        public string Longitude { get; set; }
+
         public string Applicant { get; set; }
     }
 }

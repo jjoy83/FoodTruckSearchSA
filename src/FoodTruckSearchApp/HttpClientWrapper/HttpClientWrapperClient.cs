@@ -14,6 +14,7 @@ namespace HttpClientWrapper
         public HttpClientWrapperClient()
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            this.DefaultRequestHeaders.Add("ContentType", "application/json");
         }
 
         public async Task<JObject> GetJObjectAsync(String url)
@@ -103,7 +104,7 @@ namespace HttpClientWrapper
                         }
                         catch (Exception ex)
                         {
-                            throw new Exception($"A {ex.GetType().Name} occured loading data from AzureDevops. Message: {ex.Message}", ex);
+                            throw new Exception($"A {ex.GetType().Name} occured. Message: {ex.Message}", ex);
                         }
                     }
                 }

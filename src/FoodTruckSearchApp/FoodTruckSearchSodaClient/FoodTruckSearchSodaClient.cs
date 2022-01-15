@@ -32,19 +32,26 @@ namespace FoodTruckSearchSodaClient
 
             return await Task.Run(() =>
             {
-                var dataset = _client.GetResource<Dictionary<string, object>>(SODA_DATASET);
+                try
+                {
+                    var dataset = _client.GetResource<Dictionary<string, object>>(SODA_DATASET);
 
-                //collections of an arbitrary type can be returned
-                //using SoQL and a fluent query building syntax
-                var soql = new SoqlQuery().Select("applicant", "address", "fooditems", "locationdescription", "latitude ", "longitude", "x", "y")
-                                          .Where("status = APPROVED")
-                                          .Where($"within_circle(location,{latitude} , {longitude}, 50)")
-                                          .FullTextSearch(searchKey)
-                                          .Limit(5);
+                    //collections of an arbitrary type can be returned
+                    //using SoQL and a fluent query building syntax
+                    var soql = new SoqlQuery().Select("applicant", "address", "fooditems", "locationdescription", "latitude ", "longitude", "x", "y")
+                                              .Where("status = APPROVED")
+                                              .Where($"within_circle(location,{latitude} , {longitude}, 50)")
+                                              .FullTextSearch(searchKey)
+                                              .Limit(5);
 
-                var results = dataset.Query<FoodTruckDataModel>(soql);
-                
-                return results;
+                    var results = dataset.Query<FoodTruckDataModel>(soql);
+
+                    return results;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             });
 
         }

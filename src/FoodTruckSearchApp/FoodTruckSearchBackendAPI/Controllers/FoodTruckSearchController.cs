@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using FoodTruckBackendDataModel;
+using Newtonsoft.Json.Linq;
 
 namespace FoodTruckSearchBackendAPI.Controllers
 {
@@ -53,39 +54,39 @@ namespace FoodTruckSearchBackendAPI.Controllers
 
         [Route("SearchFoodTruck")]
         [HttpGet]
-        public async Task<IEnumerable<FoodTruckResponse>> SearchFoodTruck(string searchText, string latitude, string longitude)
+        public async Task<FoodTruckResponse> SearchFoodTruck(string searchText, string latitude, string longitude)
         {
 
-            List<FoodTruckResponse> foodtruckResponseList = new List<FoodTruckResponse>();
+           FoodTruckResponse foodtruckResponse = new FoodTruckResponse();
+           
             try
             {
                 //_logger.LogError($"Making calls to bing map search api with latitude {request.Latitude}, longitude {request.Longitude}");
                 //var response = await _bingMapClient.GetNearestLocationFromBing(request.Latitude, request.Longitude, BING_MAP_KEY);
                 //_logger.LogError($"Successfully completed the calls to bing map search api with latitude {request.Latitude}, longitude {request.Longitude}");
-                _logger.LogError($"Making calls to soda client api with search text {searchText}");
+                _logger.LogInformation($"Making calls to soda client api with search text {searchText}");
                 var sodaResponse = await _sodaSearchClient.SearchFoodtruckSodaDataByText(searchText, SODA_APP_TOKEN, latitude, longitude);
-                _logger.LogError($"Successfully completed the calls to soda client api search text {searchText}");
-
-                foreach (var item in sodaResponse)
+                _logger.LogInformation($"Successfully completed the calls to soda client api search text {searchText}");
+                foodtruckResponse.FoodTruckDataList = sodaResponse.Select(item => new FoodTruckData()
                 {
-                    //TODO:Add logic to check if the latitude and longitude returned by soda response based on search text is nearby or not by comparing the latitude and longitude returned by bing map api.
-                    foodtruckResponseList.Add(new FoodTruckResponse
-                    {
-                        FoodItems = item.fooditems,
-                        Latitude = item.latitude,
-                        Longitude = item.longitude,
-                        X = item.x,
-                        Y = item.y
+                    FoodItems = item.fooditems,
+                    Latitude = item.latitude,
+                    Longitude = item.longitude,
+                    X = item.x,
+                    Y = item.y,
+                    Applicant = item.applicant
+                }).ToList();
+                foodtruckResponse.Success = true;
 
-                    });
-                }
             }
             catch (Exception ex)
             {
+                foodtruckResponse.Success = false;
+                foodtruckResponse.ErrorMessage = ex.Message;
                 _logger.LogError($"Error occured while calling food truck search api. Error - {ex.Message}, StackTrace - {ex.StackTrace}");
                
             }
-            return foodtruckResponseList;
+            return foodtruckResponse;
         }
     }
 }

@@ -13,34 +13,34 @@ namespace FoodTruckConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Welcome to search food trucks.");
             string searchKey = string.Empty;
             string latitude = string.Empty;
             string longitude = string.Empty;
 
             if (args != null)
             {
-                if (!string.IsNullOrEmpty(args[0]) && string.Compare(args[0], "searchFoodTruck") == 0)
+                if (!string.IsNullOrEmpty(args[0]) && args.Length == 3)
                 {
-                    if (args[1] == "-h")
+                    if (args[0] == "-h")
                     {
                         SearchHelpText();
                     }
                     else
                     {
+                        if (!string.IsNullOrEmpty(args[0]))
+                        {
+                            searchKey = args[0];
+                        }
+
                         if (!string.IsNullOrEmpty(args[1]))
                         {
-                            searchKey = args[1];
+                            longitude = args[1];
                         }
 
                         if (!string.IsNullOrEmpty(args[2]))
                         {
-                            longitude = args[2];
-                        }
-
-                        if (!string.IsNullOrEmpty(args[3]))
-                        {
-                            latitude = args[3];
+                            latitude = args[2];
                         }
 
                         JObject response = Task.Run(()=> FoodTruckSearchCLI.SearchFoodTruck(searchKey, latitude, longitude)).Result;
@@ -59,8 +59,8 @@ namespace FoodTruckConsoleApp
         }
         private static void SearchHelpText()
         {
-            Console.WriteLine("Please enter command as follows...");
-            Console.WriteLine("SearchFoodTruck <searchKey> <Longitude> <Latitude>");
+            Console.WriteLine("Please enter parameters as follows...");
+            Console.WriteLine("<searchKey> <Longitude> <Latitude>");
         }
     }
 }

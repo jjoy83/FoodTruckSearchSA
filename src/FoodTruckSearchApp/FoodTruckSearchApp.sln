@@ -25,9 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodTruckSearchBackendAPITe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodTruckSearchFrontEndTests", "FoodTruckSearchFrontEndTests\FoodTruckSearchFrontEndTests.csproj", "{2ED923B6-81AF-461C-92AF-989FF795DD49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodTruckBackendDataModel", "FoodTruckBackendDataModel\FoodTruckBackendDataModel.csproj", "{6EC61789-23D3-419A-9807-39F6E20D3EA6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebAPI", "TestWebAPI\TestWebAPI.csproj", "{4185FB06-F1B2-489C-911A-D1A08B785C04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodTruckBackendDataModel", "FoodTruckBackendDataModel\FoodTruckBackendDataModel.csproj", "{6EC61789-23D3-419A-9807-39F6E20D3EA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,10 +81,6 @@ Global
 		{6EC61789-23D3-419A-9807-39F6E20D3EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EC61789-23D3-419A-9807-39F6E20D3EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EC61789-23D3-419A-9807-39F6E20D3EA6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4185FB06-F1B2-489C-911A-D1A08B785C04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4185FB06-F1B2-489C-911A-D1A08B785C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4185FB06-F1B2-489C-911A-D1A08B785C04}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4185FB06-F1B2-489C-911A-D1A08B785C04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

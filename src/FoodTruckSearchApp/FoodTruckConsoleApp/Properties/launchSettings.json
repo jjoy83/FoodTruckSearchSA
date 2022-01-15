@@ -1,8 +1,8 @@
 {
   "profiles": {
     "FoodTruckConsoleApp": {
-      "commandName": "Project",
-      "commandLineArgs": "search "
+      "commandName": "project",
+      "commandLineArgs": "SearchFoodTruck taco  "
     }
   }
 }
