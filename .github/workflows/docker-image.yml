@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image - FrontEnd
-      run: docker build . --file src/FoodTruckSearchApp/FoodTruckSearchFrontEnd/Dockerfile --tag food-truck-search-frontend:$(date +%s)
+      run: docker build . --file src/FoodTruckSearchApp/FoodTruckSearchFrontEnd/Dockerfile src/FoodTruckSearchApp --tag food-truck-search-frontend:$(date +%s)
 
     - name: Build the Docker image - Backend
-      run: docker build . --file src/FoodTruckSearchApp/FoodTruckSearchBackendAPI/Dockerfile --tag food-truck-search-backend:$(date +%s)
+      run: docker build . --file src/FoodTruckSearchApp/FoodTruckSearchBackendAPI/Dockerfile src/FoodTruckSearchApp --tag food-truck-search-backend:$(date +%s)
