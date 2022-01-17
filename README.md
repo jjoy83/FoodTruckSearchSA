@@ -54,6 +54,8 @@ Due to lack of time the following items are not implemented
 - Integration tests for backend api
 - Security scans
 - Initial plan was to use bing map location api to get all the nearest addresses from the latitude and longitude provided and then use that data to find the food trucks. But later on realized that soda query provides within_circle soql option to return the near by locations. The bing map client is used as part of the initial testing. Moq was used for testing BingMapClinet
+- Integrate with AppInsights
+- Use userSecrets to store secret values in app settings json file so that it wont be added to git
 
 
 
