@@ -1,7 +1,7 @@
 # FoodTruckSearchSA
 This repository contains the source code used for setting up a web app to search food trucks in San Francisco area. It uses ASP.Net MVC Core web app and web api to search the open data available for food truck info in San Francisco. It uses bing map control to provide a visual representation of the search results. It uses SODA Net nuget package to send search request calls to soda database.
 
-[![Docker Image CI](https://github.com/jjoy83/FoodTruckSearchSA/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/jjoy83/FoodTruckSearchSA/actions/workflows/docker-image.yml)
+[![Docker Image CI](https://github.com/jjoy83/FoodTruckSearchSA/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/jjoy83/FoodTruckSearchSA/actions/workflows/docker-image.yml)[![CodeQL](https://github.com/jjoy83/FoodTruckSearchSA/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/jjoy83/FoodTruckSearchSA/actions/workflows/codeql-analysis.yml)
 
 
 ## Getting Started
