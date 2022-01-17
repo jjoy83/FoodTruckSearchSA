@@ -47,11 +47,13 @@ Due to lack of time the following items are not implemented
 - Use Azure Cognitive search to perform search with open data
 - Use Azure keyvaults to store the secrets in appsetting.Json file
 - Enable authentication for BackendAPI using Microsoft identity server
-- More unit tests to cover positive and negative cases
+- More unit tests to cover positive and negative cases. Missing unit test for soda client using Moq
 - Since no controller methods are added, no unit tests are added for controllers
 - Improve the UI experience by using bootstrap or better controls 
 - Integration tests for backend api
 - Security scans
+- Initial plan was to use bing map location api to get all the nearest addresses from the latitude and longitude provided and then use that data to find the food trucks. But later on realized that soda query provides within_circle soql option to return the near by locations. The bing map client is used as part of the initial testing. Moq was used for testing BingMapClinet
+
 
 
 
