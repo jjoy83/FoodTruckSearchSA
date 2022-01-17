@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using BingMapsRESTToolkit;
 using HttpClientWrapper;
 
 /// <summary>
@@ -10,10 +8,10 @@ using HttpClientWrapper;
 namespace FoodTruckBingMapClient
 {
     /// <summary>
-   ///This class is responsible for making search request to bing map local search
-   /// The initial idea was to use bing map local search api to get the boundaries of the co-ordinates and then uses that to filter the result further from soda api data
-   /// but it looks likr soda data already supports a filtering using within_circle for location data types.
-   /// </summary>
+    ///This class is responsible for making search request to bing map local search
+    /// The initial idea was to use bing map local search api to get the boundaries of the co-ordinates and then uses that to filter the result further from soda api data
+    /// but it looks likr soda data already supports a filtering using within_circle for location data types.
+    /// </summary>
     public class FoodTruckBingMapClient : IFoodTruckBingMapClient
     {
         private IHttpClientWrapperClient _client;

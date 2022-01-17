@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FoodTruckBackendDataModel
+﻿namespace FoodTruckBackendDataModel
 {
     /// <summary>
     /// Data model for Food truck Request

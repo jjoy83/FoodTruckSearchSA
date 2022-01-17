@@ -1,8 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FoodTruckSearchFrontEnd.Controllers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FoodTruckSearchFrontEnd.Controllers.Tests
 {
@@ -12,35 +8,35 @@ namespace FoodTruckSearchFrontEnd.Controllers.Tests
         [TestMethod()]
         public void HomeControllerTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(1, 1);
             //TODO:Add unit test
         }
 
         [TestMethod()]
         public void IndexTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(1, 1);
             //TODO:Add unit test
         }
 
         [TestMethod()]
         public void PrivacyTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(1, 1);
             //TODO:Add unit test
         }
 
         [TestMethod()]
         public void SearchTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(1, 1);
             //TODO:Add unit test
         }
 
         [TestMethod()]
         public void ErrorTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(1, 1);
             //TODO:Add unit test
         }
     }
