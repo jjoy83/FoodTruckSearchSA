@@ -45,11 +45,11 @@ For production deployment, the best option is to use the docker images, push it 
 
 ## Pending Items 
 Due to lack of time the following items are not implemented
-- Use Azure Cognitive search to perform search with open data
+- Use Azure Cognitive search to perform search with open data. This will provide more extensive search experiences.
 - Use Azure keyvaults to store the secrets in appsetting.Json file
 - Enable authentication for BackendAPI using Microsoft identity server
-- More unit tests to cover positive and negative cases. Missing unit test for soda client using Moq. Hookup code coverage and run sonar qube code analysis.
-- Since no controller methods are added, no unit tests are added for controllers
+- More unit tests to cover positive and negative cases. Missing unit test for soda client using Moq. Hookup code coverage and run sonar qube code analysis. Functional tests to test middleware and integration tests are missing. Some of the original tests were using MSUnit. It can be refactored to Xunit.
+- Since no controller methods are added, no unit tests are added for frontend controllers
 - Improve the UI experience by using bootstrap or better controls 
 - Integration tests for backend api
 - Security scans
