@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var url = ViewData["BackendURL"];
 }
 
     <table>
@@ -41,7 +42,7 @@
                             </div>
                         </td>
                         <td>
-                            <div><input id="btnSearch" value="Search" type="submit" OnClick="RenderSearchResultsOnMap();" /></div>
+                            <div><input id="btnSearch" value="Search" type="submit" OnClick="RenderSearchResultsOnMap('@Html.ViewData["BackendURL"]');" /></div>
                         </td>
                     </tr>
                     <tr>

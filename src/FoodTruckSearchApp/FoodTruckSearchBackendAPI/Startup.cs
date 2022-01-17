@@ -52,7 +52,7 @@ namespace FoodTruckSearchBackendAPI
                 options.AddPolicy(name: allowCORSOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("https://localhost:44364")
+                                      builder.WithOrigins("https://localhost:44364", "https://localhost:5002")
                                       .AllowAnyHeader()
                                       .AllowAnyMethod();;
                                   });

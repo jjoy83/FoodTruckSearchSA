@@ -16,7 +16,6 @@
     <ProjectReference Include="..\FoodTruckBackendDataModel\FoodTruckBackendDataModel.csproj" />
     <ProjectReference Include="..\FoodTruckBingMapClient\FoodTruckBingMapClient.csproj" />
     <ProjectReference Include="..\FoodTruckSearchSodaClient\FoodTruckSearchSodaClient.csproj" />
-    <ProjectReference Include="..\HttpClient\FoodTruckSearchSodaClient.csproj" />
   </ItemGroup>
 
 

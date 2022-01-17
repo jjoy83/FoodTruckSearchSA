@@ -29,38 +29,9 @@ namespace FoodTruckSearchFrontEnd.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<SearchResponseViewModel> model = new List<SearchResponseViewModel>();
-            return View(model);
+            ViewData["BackendURL"] = _backendAPIUrl;
+            return View();
         }
-
-        //public async Task<IActionResult> Search(string searchText, string latitude, string longitude)
-        //{
-        //    if (!string.IsNullOrEmpty(searchText))
-        //    {
-        //        SearchResponseDataModel responseViewModel = null;
-        //        IHttpClientWrapperClient client = new HttpClientWrapperClient();
-        //        string url = _backendAPIUrl;
-
-        //        //Since this code is duplicated in Console app, we could refactor to a utility class.
-        //        StringBuilder sb = new StringBuilder(url);
-        //        sb.Append("?");
-        //        sb.Append($"&searchText={Uri.EscapeUriString(searchText)}");
-        //        sb.Append($"&latitude={Uri.EscapeUriString(latitude)}");
-        //        sb.Append($"&longitude={Uri.EscapeUriString(longitude)}");
-        //        var response = await client.GetJObjectAsync(sb.ToString());
-
-        //        if (response != null)
-        //        {
-        //            responseViewModel = JsonConvert.DeserializeObject<SearchResponseDataModel>(response.ToString());
-        //        }
-
-        //        return View(responseViewModel.SearchResponseViewModelList);
-        //    }
-        //    else
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-        //}
 
         public IActionResult Privacy()
         {
