@@ -3,9 +3,9 @@ This repository contains the source code used for setting up a web app to search
 
 
 
-##Getting Started
-Download the entire source code to a local folder. 
-Run the powershell command build-backend.ps1
+## Getting Started
+1. Download the entire source code to a local folder. 
+2. Run the powershell command build-backend.ps1
 This will host the backend web api at the url https://localhost:5000. Open the url to access the swagger pages.
 Run the powershell command build-frontend.ps1
 This will host the frontend web app at the url https://localhost:5002. Open the url to access the web site.
