@@ -30,6 +30,7 @@ namespace FoodTruckSearchFrontEnd.Controllers
         public IActionResult Index()
         {
             ViewData["BackendURL"] = _backendAPIUrl;
+          
             return View();
         }
 
