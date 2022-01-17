@@ -42,7 +42,7 @@ namespace FoodTruckConsoleApp
 
                 if (Uri.IsWellFormedUriString(sb.ToString(), UriKind.Absolute))
                 {
-                    response = await _client.GetJObjectAsync(url);
+                    response = await _client.GetJObjectAsync(sb.ToString());
 
                 }
                 else

@@ -48,20 +48,28 @@ namespace FoodTruckConsoleApp
                             }
 
                             Console.WriteLine($"Searching food trucks for {searchKey}, Latitude - {latitude}, Longitude - {longitude}");
-                            
+
                             JObject response = Task.Run(() => FoodTruckSearchCLI.SearchFoodTruck(searchKey, latitude, longitude)).Result;
+
                             var foodTruckResponse = JsonConvert.DeserializeObject<FoodTruckResponse>(response.ToString());
 
                             if (foodTruckResponse.Success)
                             {
-                                if (!string.IsNullOrEmpty(foodTruckResponse.ErrorMessage))
+                                if (string.IsNullOrEmpty(foodTruckResponse.ErrorMessage))
                                 {
-                                    Console.WriteLine($"These are the food trucks available based on your search:-");
-
-                                    foreach (FoodTruckData item in foodTruckResponse.FoodTruckDataList)
+                                    if (foodTruckResponse.FoodTruckDataList == null)
                                     {
-                                        //TODO:Its probably better to return the address as well here.
-                                        Console.WriteLine($"{item.Applicant} --- {item.FoodItems} -- {item.Latitude} -- {item.Longitude}");
+                                        Console.WriteLine($"No results found for this search criteria.");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine($"These are the food trucks available based on your search:-");
+
+                                        foreach (FoodTruckData item in foodTruckResponse.FoodTruckDataList)
+                                        {
+                                            //TODO:Its probably better to return the address as well here.
+                                            Console.WriteLine($"{item.Applicant} --- {item.FoodItems} -- {item.Latitude} -- {item.Longitude}");
+                                        }
                                     }
                                 }
                                 else
@@ -73,6 +81,7 @@ namespace FoodTruckConsoleApp
                             {
                                 Console.WriteLine($"Error occurred searching the food trucks. Error - {foodTruckResponse.ErrorMessage}");
                             }
+
 
 
                         }
