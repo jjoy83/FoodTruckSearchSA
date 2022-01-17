@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FoodTruckBackendDataModel\FoodTruckBackendDataModel.csproj" />
     <ProjectReference Include="..\HttpClientWrapper\HttpClientWrapper.csproj" />
   </ItemGroup>
 

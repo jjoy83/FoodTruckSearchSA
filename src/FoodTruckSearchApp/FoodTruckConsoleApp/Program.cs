@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using FoodTruckBackendDataModel;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Threading.Tasks;
 
@@ -20,38 +22,71 @@ namespace FoodTruckConsoleApp
 
             if (args != null)
             {
-                if (!string.IsNullOrEmpty(args[0]) && args.Length == 3)
+                try
                 {
-                    if (args[0] == "-h")
+                    if (!string.IsNullOrEmpty(args[0]) && args.Length == 3)
                     {
-                        SearchHelpText();
+                        if (args[0] == "-h")
+                        {
+                            SearchHelpText();
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(args[0].ToString()))
+                            {
+                                searchKey = args[0].ToString();
+                            }
+
+                            if (!string.IsNullOrEmpty(args[1].ToString()))
+                            {
+                                latitude = args[1].ToString();
+                            }
+
+                            if (!string.IsNullOrEmpty(args[2].ToString()))
+                            {
+                                longitude = args[2].ToString();
+                            }
+
+                            Console.WriteLine($"Searching food trucks for {searchKey}, Latitude - {latitude}, Longitude - {longitude}");
+                            
+                            JObject response = Task.Run(() => FoodTruckSearchCLI.SearchFoodTruck(searchKey, latitude, longitude)).Result;
+                            var foodTruckResponse = JsonConvert.DeserializeObject<FoodTruckResponse>(response.ToString());
+
+                            if (foodTruckResponse.Success)
+                            {
+                                if (!string.IsNullOrEmpty(foodTruckResponse.ErrorMessage))
+                                {
+                                    Console.WriteLine($"These are the food trucks available based on your search:-");
+
+                                    foreach (FoodTruckData item in foodTruckResponse.FoodTruckDataList)
+                                    {
+                                        //TODO:Its probably better to return the address as well here.
+                                        Console.WriteLine($"{item.Applicant} --- {item.FoodItems} -- {item.Latitude} -- {item.Longitude}");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"{foodTruckResponse.ErrorMessage}");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Error occurred searching the food trucks. Error - {foodTruckResponse.ErrorMessage}");
+                            }
+
+
+                        }
+
                     }
                     else
                     {
-                        if (!string.IsNullOrEmpty(args[0]))
-                        {
-                            searchKey = args[0];
-                        }
-
-                        if (!string.IsNullOrEmpty(args[1]))
-                        {
-                            longitude = args[1];
-                        }
-
-                        if (!string.IsNullOrEmpty(args[2]))
-                        {
-                            latitude = args[2];
-                        }
-
-                        JObject response = Task.Run(()=> FoodTruckSearchCLI.SearchFoodTruck(searchKey, latitude, longitude)).Result;
-                        Console.WriteLine(response.ToString());
-                     
+                        SearchHelpText();
                     }
-
                 }
-                else
+                catch (Exception ex)
                 {
-                    SearchHelpText();
+
+                    Console.WriteLine($"Error occurred searching the food trucks. Error - {ex.Message}");
                 }
             }
 

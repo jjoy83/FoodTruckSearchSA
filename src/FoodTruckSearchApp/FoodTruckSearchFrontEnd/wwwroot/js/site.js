@@ -27,38 +27,62 @@ function GetMap() {
     });
 }
 
-function RenderSearchResultsOnMap()
-{
+function RenderSearchResultsOnMap() {
     debugger;
-    var base64Image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAcBAMAAABmCgnjAAAAFVBMVEVHcEz///8aGhpsuy2s4oDRuPMaADiElDMGAAAAAXRSTlMAQObYZgAAAFNJREFUeF7FkLENgDAQA52GGiIxwD8bPBsgBmD/aXCs6JMNcpWtk1wYx8SO6gO2N3kWtDuJBc39UtYTPEc69BIpTVqLgjJOpS7tQ1I5NyiGia2rHyT7OTg7xhBoAAAAAElFTkSuQmCC';
+   
+    var searchTextParam = $('#txtSearchKey')[0].value;
+    var latitudeParam = $('#txtSearchLatitude')[0].value;
+    var longitudeParam = $('#txtSearchLongitude')[0].value;
+    var url = 'https://localhost:44307/FoodTruckSearch/SearchFoodTruck?searchText=' + searchTextParam + '&latitude=' + latitudeParam + '&longitude=' + longitudeParam;
+    $('#errorMessage')[0].innerHTML = "";
+    $('#results')[0].innerHTML = "";
     var map = new Microsoft.Maps.Map('#myMap');
+    map.entities.clear();
 
-    var searchTextParam = document.getElementsByName('searchText')[0].value;
-    var latitudeParam = document.getElementsByName('latitude')[0].value;
-    var longitudeParam = document.getElementsByName('longitude')[0].value;
-
-    fetch('https://localhost:44307/FoodTruckSearch/SearchFoodTruck?searchText=' + searchTextParam + '&latitude=' + latitudeParam + '&longitude=' + longitudeParam)
+    fetch(url, { headers: { 'Content-Type': 'application/json; charset=UTF-8' } })
         .then(async (response) => {
-
+           
             // get json response here
-            let data = await response.json();
-            
+            let result = await response.json();
+         
+            alert(result.success);
             if (response.status === 200) {
-                alert(data);
-                var result = Json.parse(data);
-                for (item in result.FoodTruckDataList) {
-                    var mapPoint = new Microsoft.Maps.Point(item.x, item.y);
-                    //Add a pushpin at the user's location.
-                    var pin = new Microsoft.Maps.Pushpin(mapPoint, { icon: base64Image, anchor: new Microsoft.Maps.Point(12, 28) }, { text: 'Food truck', title: item.Applicant, subTitle: item.FoodItems });
-                    map.entities.push(pin);
+                if (result.success) {
+                    if (result.errorMessage == null) {
+                        alert(result.success);
+                        var loc = new Microsoft.Maps.Location(result.foodTruckDataList[0].latitude, result.foodTruckDataList[0].longitude);
 
+                        //Center the map on the user's location.
+                        map.setView({ center: loc, zoom: 10 });
+
+                        for (let i = 0; i < result.foodTruckDataList.length; i++) {
+                            alert(result.foodTruckDataList[i].foodItems);
+                            $('#results')[0].innerHTML += "<br>" + result.foodTruckDataList[i].applicant + "---" + result.foodTruckDataList[i].foodItems;
+
+                            var mapPoint = new Microsoft.Maps.Point(result.foodTruckDataList[i].x, result.foodTruckDataList[i].y);
+                            //Add a pushpin at the user's location.
+                            var pin = new Microsoft.Maps.Pushpin(mapPoint, { icon: 'https://www.bingmapsportal.com/Content/images/poi_custom.png', anchor: new Microsoft.Maps.Point(12, 28) }, { text: 'Food truck', title: result.foodTruckDataList[i].applicant, subTitle: result.foodTruckDataList[i].foodItems });
+                            map.entities.push(pin);
+
+                        }
+                    }
+                    else {
+                        $('#errorMessage')[0].innerHTML = result.errorMessage;
+                    }
+
+                    
+                } else {
+                    alert(result.errorMessage);
+                    $('#errorMessage')[0].innerHTML = result.errorMessage;
                 }
-            } else {
-                document.getElementsByName('searchText')[0].innerHTML = "Error occured while executing the search. Please try again later or contact support if problem persists."
+            }
+            else {
+                $('#errorMessage')[0].innerHTML = "Error occured while executing the search. Please try again later or contact support if problem persists."
             }
 
         })
-        .catch((err) => {
-            console.log(err);
-        })
+        .catch(err => console.log(err))
 }
+
+
+

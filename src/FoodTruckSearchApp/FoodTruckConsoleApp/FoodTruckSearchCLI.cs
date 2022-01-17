@@ -47,12 +47,12 @@ namespace FoodTruckConsoleApp
                 }
                 else
                 {
-                    Console.WriteLine("The parameters are not valid. Please try again. Type FoodTruckSearch -h for help...");
+                    throw new Exception("The parameters are not valid. Please try again. Type  -h for help...");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occured while searching for food truck.Error - {ex.Message} Details {ex.StackTrace}.");
+                throw ex;
             }
 
             return response;

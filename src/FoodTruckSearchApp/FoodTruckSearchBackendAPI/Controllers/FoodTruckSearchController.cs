@@ -57,26 +57,58 @@ namespace FoodTruckSearchBackendAPI.Controllers
         public async Task<FoodTruckResponse> SearchFoodTruck(string searchText, string latitude, string longitude)
         {
 
-           FoodTruckResponse foodtruckResponse = new FoodTruckResponse();
-           
+            FoodTruckResponse foodtruckResponse = new FoodTruckResponse();
+
             try
             {
-                //_logger.LogError($"Making calls to bing map search api with latitude {request.Latitude}, longitude {request.Longitude}");
-                //var response = await _bingMapClient.GetNearestLocationFromBing(request.Latitude, request.Longitude, BING_MAP_KEY);
-                //_logger.LogError($"Successfully completed the calls to bing map search api with latitude {request.Latitude}, longitude {request.Longitude}");
-                _logger.LogInformation($"Making calls to soda client api with search text {searchText}");
-                var sodaResponse = await _sodaSearchClient.SearchFoodtruckSodaDataByText(searchText, SODA_APP_TOKEN, latitude, longitude);
-                _logger.LogInformation($"Successfully completed the calls to soda client api search text {searchText}");
-                foodtruckResponse.FoodTruckDataList = sodaResponse.Select(item => new FoodTruckData()
+                bool isValid = true;
+
+                if (string.IsNullOrEmpty(searchText))
                 {
-                    FoodItems = item.fooditems,
-                    Latitude = item.latitude,
-                    Longitude = item.longitude,
-                    X = item.x,
-                    Y = item.y,
-                    Applicant = item.applicant
-                }).ToList();
-                foodtruckResponse.Success = true;
+                    foodtruckResponse.Success = true;
+                    foodtruckResponse.ErrorMessage = "Please provide parameter search text.";
+                    isValid = false;
+                }
+
+                if (string.IsNullOrEmpty(latitude))
+                {
+                    foodtruckResponse.Success = true;
+                    foodtruckResponse.ErrorMessage = "Please provide parameter latitude.";
+                    isValid = false;
+                }
+
+                if (string.IsNullOrEmpty(longitude))
+                {
+                    foodtruckResponse.Success = true;
+                    foodtruckResponse.ErrorMessage = "Please provide parameter longitude.";
+                    isValid = false;
+                }
+
+                if (isValid)
+                {
+                    _logger.LogInformation($"Making calls to soda client api with search text {searchText}");
+                    var sodaResponse = await _sodaSearchClient.SearchFoodtruckSodaDataByText(searchText, SODA_APP_TOKEN, latitude, longitude);
+                    _logger.LogInformation($"Successfully completed the calls to soda client api search text {searchText}");
+
+                    if (sodaResponse != null && sodaResponse.Count() > 0)
+                    {
+                        foodtruckResponse.FoodTruckDataList = sodaResponse.Select(item => new FoodTruckData()
+                        {
+                            FoodItems = item.fooditems,
+                            Latitude = item.latitude,
+                            Longitude = item.longitude,
+                            X = item.x,
+                            Y = item.y,
+                            Applicant = item.applicant
+                        }).ToList();
+                        foodtruckResponse.Success = true;
+                    }
+                    else
+                    {
+                        foodtruckResponse.Success = true;
+                        foodtruckResponse.ErrorMessage = "No results found for this search criteria.";
+                    }
+                }
 
             }
             catch (Exception ex)
@@ -84,7 +116,7 @@ namespace FoodTruckSearchBackendAPI.Controllers
                 foodtruckResponse.Success = false;
                 foodtruckResponse.ErrorMessage = ex.Message;
                 _logger.LogError($"Error occured while calling food truck search api. Error - {ex.Message}, StackTrace - {ex.StackTrace}");
-               
+
             }
             return foodtruckResponse;
         }

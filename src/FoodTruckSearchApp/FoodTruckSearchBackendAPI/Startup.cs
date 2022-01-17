@@ -19,6 +19,7 @@ namespace FoodTruckSearchBackendAPI
 {
     public class Startup
     {
+        public string allowCORSOrigins = "allowCORSOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,6 +30,7 @@ namespace FoodTruckSearchBackendAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+          
             services.AddScoped<IFoodTruckSearchSodaClient, FoodTruckSearchSodaClient.FoodTruckSearchSodaClient>();
             //services.AddScoped<IFoodTruckBingMapClient, FoodTruckBingMapClient.FoodTruckBingMapClient>();
             services.AddSingleton<IHttpClientWrapperClient, HttpClientWrapperClient>();
@@ -45,7 +47,17 @@ namespace FoodTruckSearchBackendAPI
             });
 
             services.AddControllers();
-       
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: allowCORSOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("https://localhost:44364")
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod();;
+                                  });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,11 +73,14 @@ namespace FoodTruckSearchBackendAPI
 
             app.UseRouting();
 
+            app.UseCors(allowCORSOrigins);
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers()
+                .RequireCors(allowCORSOrigins); 
             });
 
             app.UseSwaggerUI(options =>
@@ -73,6 +88,8 @@ namespace FoodTruckSearchBackendAPI
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
                 options.RoutePrefix = string.Empty;
             });
+
+      
         }
     }
 }

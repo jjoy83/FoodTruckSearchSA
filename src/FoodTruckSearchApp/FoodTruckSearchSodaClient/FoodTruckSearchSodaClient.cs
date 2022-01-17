@@ -40,11 +40,12 @@ namespace FoodTruckSearchSodaClient
                     //using SoQL and a fluent query building syntax
                     var soql = new SoqlQuery().Select("applicant", "address", "fooditems", "locationdescription", "latitude ", "longitude", "x", "y")
                                               .Where("status = APPROVED")
-                                              .Where($"within_circle(location,{latitude} , {longitude}, 50)")
+                                              .Where($"within_circle(location,{latitude} , {longitude}, 1000)")
                                               .FullTextSearch(searchKey)
                                               .Limit(5);
-
-                    var results = dataset.Query<FoodTruckDataModel>(soql);
+                   
+                    
+                    var results = dataset.Query<FoodTruckDataModel>(soql).ToList();
 
                     return results;
                 }
