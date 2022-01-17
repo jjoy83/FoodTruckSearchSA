@@ -21,11 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpClientWrapper", "HttpCl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpClientWrapperTests", "HttpClientWrapperTests\HttpClientWrapperTests.csproj", "{B23777C9-1586-4BD7-A666-1057434654AF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodTruckSearchBackendAPITests", "FoodTruckSearchBackendAPITests\FoodTruckSearchBackendAPITests.csproj", "{DF4AE719-3B67-4CEE-AB6E-32B4C7916B55}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodTruckSearchFrontEndTests", "FoodTruckSearchFrontEndTests\FoodTruckSearchFrontEndTests.csproj", "{2ED923B6-81AF-461C-92AF-989FF795DD49}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodTruckBackendDataModel", "FoodTruckBackendDataModel\FoodTruckBackendDataModel.csproj", "{6EC61789-23D3-419A-9807-39F6E20D3EA6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodTruckSearchBackendAPITest", "FoodTruckSearchBackendAPITest\FoodTruckSearchBackendAPITest.csproj", "{E90DBC46-9C36-4D60-B3C2-052C6EAB1A71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,10 +69,6 @@ Global
 		{B23777C9-1586-4BD7-A666-1057434654AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B23777C9-1586-4BD7-A666-1057434654AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B23777C9-1586-4BD7-A666-1057434654AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF4AE719-3B67-4CEE-AB6E-32B4C7916B55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF4AE719-3B67-4CEE-AB6E-32B4C7916B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF4AE719-3B67-4CEE-AB6E-32B4C7916B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF4AE719-3B67-4CEE-AB6E-32B4C7916B55}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2ED923B6-81AF-461C-92AF-989FF795DD49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2ED923B6-81AF-461C-92AF-989FF795DD49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ED923B6-81AF-461C-92AF-989FF795DD49}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -81,6 +77,10 @@ Global
 		{6EC61789-23D3-419A-9807-39F6E20D3EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EC61789-23D3-419A-9807-39F6E20D3EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EC61789-23D3-419A-9807-39F6E20D3EA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E90DBC46-9C36-4D60-B3C2-052C6EAB1A71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90DBC46-9C36-4D60-B3C2-052C6EAB1A71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90DBC46-9C36-4D60-B3C2-052C6EAB1A71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90DBC46-9C36-4D60-B3C2-052C6EAB1A71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
