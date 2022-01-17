@@ -15,6 +15,7 @@ This repository contains the source code used for setting up a web app to search
 
 ![image](https://user-images.githubusercontent.com/35704508/149718447-fcbfd84a-46da-491e-a0aa-ed393a60058f.png)
 
+![image](https://user-images.githubusercontent.com/35704508/149812127-18d765a2-df8a-44cc-912a-09169a1c088c.png)
 
 
 ## Project Structure
@@ -47,7 +48,7 @@ Due to lack of time the following items are not implemented
 - Use Azure Cognitive search to perform search with open data
 - Use Azure keyvaults to store the secrets in appsetting.Json file
 - Enable authentication for BackendAPI using Microsoft identity server
-- More unit tests to cover positive and negative cases. Missing unit test for soda client using Moq
+- More unit tests to cover positive and negative cases. Missing unit test for soda client using Moq. Hookup code coverage and run sonar qube code analysis.
 - Since no controller methods are added, no unit tests are added for controllers
 - Improve the UI experience by using bootstrap or better controls 
 - Integration tests for backend api
