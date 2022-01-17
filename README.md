@@ -1,5 +1,5 @@
 # FoodTruckSearchSA
-This repository contains the source code used for setting up a web app to search food trucks in San Francisco area. It uses ASP.Net MVC Core web app and web api to search the open data available for food truck info in San Francisco. It uses bing map control to provide a visual representation of the search results. It uses SODA Net nuget packages to send search request calls to soda database.
+This repository contains the source code used for setting up a web app to search food trucks in San Francisco area. It uses ASP.Net MVC Core web app and web api to search the open data available for food truck info in San Francisco. It uses bing map control to provide a visual representation of the search results. It uses SODA Net nuget package to send search request calls to soda database.
 
 [![Docker Image CI](https://github.com/jjoy83/FoodTruckSearchSA/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/jjoy83/FoodTruckSearchSA/actions/workflows/docker-image.yml)
 
@@ -15,6 +15,7 @@ This repository contains the source code used for setting up a web app to search
 
 ![image](https://user-images.githubusercontent.com/35704508/149718447-fcbfd84a-46da-491e-a0aa-ed393a60058f.png)
 
+![image](https://user-images.githubusercontent.com/35704508/149812127-18d765a2-df8a-44cc-912a-09169a1c088c.png)
 
 
 ## Project Structure
@@ -44,15 +45,17 @@ For production deployment, the best option is to use the docker images, push it 
 
 ## Pending Items 
 Due to lack of time the following items are not implemented
-- Use Azure Cognitive search to perform search with open data
+- Use Azure Cognitive search to perform search with open data. This will provide more extensive search experiences.
 - Use Azure keyvaults to store the secrets in appsetting.Json file
 - Enable authentication for BackendAPI using Microsoft identity server
-- More unit tests to cover positive and negative cases. Missing unit test for soda client using Moq
-- Since no controller methods are added, no unit tests are added for controllers
+- More unit tests to cover positive and negative cases. Missing unit test for soda client using Moq. Hookup code coverage and run sonar qube code analysis. Functional tests to test middleware and integration tests are missing. Some of the original tests were using MSUnit. It can be refactored to Xunit.
+- Since no controller methods are added, no unit tests are added for frontend controllers
 - Improve the UI experience by using bootstrap or better controls 
 - Integration tests for backend api
 - Security scans
 - Initial plan was to use bing map location api to get all the nearest addresses from the latitude and longitude provided and then use that data to find the food trucks. But later on realized that soda query provides within_circle soql option to return the near by locations. The bing map client is used as part of the initial testing. Moq was used for testing BingMapClinet
+- Integrate with AppInsights
+- Use userSecrets to store secret values in app settings json file so that it wont be added to git
 
 
 
