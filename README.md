@@ -6,10 +6,16 @@ This repository contains the source code used for setting up a web app to search
 
 ## Getting Started
 1. Download the entire source code to a local folder. 
-2. Run the powershell command build-backend.ps1
-3. This will host the backend web api at the url https://localhost:5000. Open the url to access the swagger pages.
-4. Run the powershell command build-frontend.ps1.This will host the frontend web app at the url https://localhost:5002. Open the url to access the web site.
-5. Search some data such as taco, "latitude": "37.790485146128",   "longitude": "-122.40094044068951",
+2. Add the Soda account token in the appsetting.json file for BackendAPI
+3. Run the powershell command build-backend.ps1
+4. This will host the backend web api at the url https://localhost:5000. Open the url to access the swagger pages.
+5. Add the bingMapKey in the Layout.html file in the script section
+6. Run the powershell command build-frontend.ps1.This will host the frontend web app at the url https://localhost:5002. Open the url to access the web site.
+7. Search some data such as taco, "latitude": "37.790485146128",   "longitude": "-122.40094044068951",
+
+![image](https://user-images.githubusercontent.com/35704508/149718447-fcbfd84a-46da-491e-a0aa-ed393a60058f.png)
+
+
 
 ## Project Structure
 These are the main components of the project
@@ -25,11 +31,29 @@ These are the main components of the project
 All components have the unit test classes.
 
 ## Running the project
-There are 2 ways to run this project locally for debugging. 
-- You can use Visual Studio to build and run the frontend and backend api using IISExpress
+There are 2 ways to run this project locally for debugging. The backend urls will be different based on which approach is being used. The backend url can be set in the appsetting.json file for FrontEnd web app or app.config file for console app.
+- You can use Visual Studio to build and run the frontend and backend api using IISExpress. 
 - You can use the docker files for frontend and backend to run it using docker desktop
+- Provide the bingMapKey in the layout.html file
+- Provide the soda account app token in the appSettings.json file.
+- There is a console app for CLI use. Run the FoodTruckSearchConsoleApp.exe by providing the parameters for searchText, Latitude and Longitude.
 
 ## Deploying the app
+For production deployment, the best option is to use the docker images, push it to container registry in Azure or github and then deploy it to Azure web apps. Alternatively based on the performance or scalability requirement, it can be deployed to Kubernetes cluster as well. The deployment workflow is added in GitHub actions. Once all the appropriate values are filled, it can be enabled.
+
+
+## Pending Items 
+Due to lack of time the following items are not implemented
+- Use Azure Cognitive search to perform search with open data
+- Use Azure keyvaults to store the secrets in appsetting.Json file
+- Enable authentication for BackendAPI using Microsoft identity server
+- More unit tests to cover positive and negative cases
+- Since no controller methods are added, no unit tests are added for controllers
+- Improve the UI experience by using bootstrap or better controls 
+- Integration tests for backend api
+- Security scans
+
+
 
 
 
