@@ -66,21 +66,21 @@ namespace FoodTruckSearchBackendAPI.Controllers
                 if (string.IsNullOrEmpty(searchText))
                 {
                     foodtruckResponse.Success = true;
-                    foodtruckResponse.ErrorMessage = "Please provide parameter search text.";
+                    foodtruckResponse.ErrorMessage = "Please provide parameter search text.\n";
                     isValid = false;
                 }
 
                 if (string.IsNullOrEmpty(latitude))
                 {
                     foodtruckResponse.Success = true;
-                    foodtruckResponse.ErrorMessage = "Please provide parameter latitude.";
+                    foodtruckResponse.ErrorMessage += "Please provide parameter latitude.\n";
                     isValid = false;
                 }
 
                 if (string.IsNullOrEmpty(longitude))
                 {
                     foodtruckResponse.Success = true;
-                    foodtruckResponse.ErrorMessage = "Please provide parameter longitude.";
+                    foodtruckResponse.ErrorMessage += "Please provide parameter longitude.\n";
                     isValid = false;
                 }
 

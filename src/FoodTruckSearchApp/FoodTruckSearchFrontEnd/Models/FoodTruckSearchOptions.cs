@@ -9,5 +9,6 @@ namespace FoodTruckSearchFrontEnd.Models
     {
         public const string SectionName = "BackendAPI";
         public string Uri { get;set;}
+
     }
 }
