@@ -1,9 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-/// <summary>
+﻿/// <summary>
 /// This is the response model for bing map location search api
 /// </summary>
 namespace FoodTruckBingMapClient

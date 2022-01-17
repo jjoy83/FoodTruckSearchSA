@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using FoodTruckSearchFrontEnd.Models;
-using HttpClientWrapper;
 using Microsoft.Extensions.Options;
-using System.Text;
-using Newtonsoft.Json;
 
 namespace FoodTruckSearchFrontEnd.Controllers
 {

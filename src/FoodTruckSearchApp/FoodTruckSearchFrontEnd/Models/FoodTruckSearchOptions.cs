@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FoodTruckSearchFrontEnd.Models
+﻿namespace FoodTruckSearchFrontEnd.Models
 {
     public class FoodTruckSearchOptions
     {

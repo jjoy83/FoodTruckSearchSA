@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FoodTruckBingMapClient;
 using FoodTruckSearchBackendAPI.Settings;
 using FoodTruckSearchSodaClient;
 using HttpClientWrapper;
@@ -10,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using FoodTruckBackendDataModel;
-using Newtonsoft.Json.Linq;
 
 namespace FoodTruckSearchBackendAPI.Controllers
 {

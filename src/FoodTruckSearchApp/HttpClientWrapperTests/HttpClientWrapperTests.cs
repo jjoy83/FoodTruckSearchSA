@@ -1,9 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HttpClientWrapper;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Net;
 using MockHttpClient;
 using System.Net.Http;
 

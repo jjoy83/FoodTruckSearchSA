@@ -1,10 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FoodTruckBingMapClient;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Net.Http;
-using System.Threading.Tasks;
 using Moq;
 using HttpClientWrapper;
 using Newtonsoft.Json.Linq;
